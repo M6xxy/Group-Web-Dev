@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiple Choice Question</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .question-container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="question-container">
+    <h2>What is the capital of France?</h2>
+    <form id="quizForm">
+      <label><input type="radio" name="answer" value="A"> A. Berlin</label><br>
+      <label><input type="radio" name="answer" value="B"> B. Madrid</label><br>
+      <label><input type="radio" name="answer" value="C"> C. Paris</label><br>
+      <label><input type="radio" name="answer" value="D"> D. Rome</label><br>
+      <button type="button" onclick="checkAnswer()">Submit</button>
+    </form>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const choices = document.getElementsByName('answer');
+      let selected = null;
+
+      for (const choice of choices) {
+        if (choice.checked) {
+          selected = choice.value;
+          break;
+        }
+      }
+
+      const result = document.getElementById('result');
+      if (selected === "C") {
+        result.textContent = "Correct! 🎉";
+        result.style.color = "green";
+      } else if (selected) {
+        result.textContent = "Incorrect. Try again!";
+        result.style.color = "red";
+      } else {
+        result.textContent = "Please select an answer.";
+        result.style.color = "orange";
+      }
+    }
+  </script>
+
+</body>
+</html>
